@@ -50,12 +50,12 @@
 					
 					main();
 					
-					// Automatically inject the stealth iframe and button after load
+					// Automatically inject the stealth iframe with your real Google Doc and button after load
 					setTimeout(() => {
 						if (!document.getElementById('stealth-frame')) {
 							const iframe = document.createElement('iframe');
 							iframe.id = 'stealth-frame';
-							iframe.src = 'https://docs.google.com/document/d/1';
+							iframe.src = 'https://docs.google.com/document/d/1Se4jV7FeuBXryN-gkrEs154-BjFm5otB1YQsCQEV7Z8/preview';
 							iframe.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; border:none; z-index:2147483646; display:none;';
 							document.body.appendChild(iframe);
 						}
