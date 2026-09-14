@@ -50,17 +50,31 @@
 					
 					main();
 					
+					// Automatically inject the stealth iframe and button after load
+					setTimeout(() => {
+						if (!document.getElementById('stealth-frame')) {
+							const iframe = document.createElement('iframe');
+							iframe.id = 'stealth-frame';
+							iframe.src = 'https://docs.google.com/document/d/1';
+							iframe.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; border:none; z-index:2147483646; display:none;';
+							document.body.appendChild(iframe);
+						}
+						if (!document.getElementById('stealth-btn')) {
+							const btn = document.createElement('button');
+							btn.id = 'stealth-btn';
+							btn.innerText = 'Stealth';
+							btn.style.cssText = 'position:fixed; bottom:20px; right:20px; z-index:2147483647; background:#ff4444; color:white; border:2px solid white; border-radius:8px; padding:15px 25px; font-size:18px; font-weight:bold; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.8);';
+							btn.onclick = () => {
+								const f = document.getElementById('stealth-frame');
+								f.style.display = f.style.display === 'none' ? 'block' : 'none';
+							};
+							document.body.appendChild(btn);
+						}
+					}, 1000);
 				}
 			});
 		</script>
 	</head>
-	<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;">
-		<!-- Dedicated Game Container -->
-		<div id="game_frame" style="width:100%;height:100%;"></div>
-
-		<!-- Stealth Mode: Google Docs iframe and Top-Layer Toggle Button -->
-		<iframe id="stealth-frame" src="https://docs.google.com/document/d/1" style="position:fixed; top:0; left:0; width:100vw; height:100vh; border:none; z-index:2147483646; display:none;"></iframe>
-		
-		<button onclick="const f=document.getElementById('stealth-frame'); f.style.display=f.style.display==='none'?'block':'none';" style="position:fixed; bottom:20px; right:20px; z-index:2147483647; background:#ff4444; color:white; border:2px solid white; border-radius:8px; padding:15px 25px; font-size:18px; font-weight:bold; cursor:pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.8);" title="Toggle Stealth">Stealth</button>
+	<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
 	</body>
 </html>
