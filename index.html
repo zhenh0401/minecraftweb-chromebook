@@ -55,13 +55,15 @@
 		</script>
 	</head>
 	<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
-		<!-- Stealth Mode: Press F1 to toggle Google Docs iframe -->
+		<!-- Stealth Mode: Google Docs iframe and Clickable Toggle Button -->
 		<iframe id="stealth-frame" src="https://docs.google.com/document/d/1" style="position:fixed; top:0; left:0; width:100vw; height:100vh; border:none; z-index:999999; display:none;"></iframe>
+		
+		<button onclick="const f=document.getElementById('stealth-frame'); f.style.display=f.style.display==='none'?'block':'none';" style="position:fixed; bottom:5px; right:5px; z-index:1000000; opacity:0.1; background:black; color:white; border:none; padding:5px 10px; cursor:pointer;" title="Stealth Toggle">.</button>
 
 		<script>
 			window.addEventListener('keydown', (e) => {
 				if (e.code === 'F1') {
-					e.preventDefault(); // Prevents browser help menu from opening
+					e.preventDefault();
 					const frame = document.getElementById('stealth-frame');
 					frame.style.display = frame.style.display === 'none' ? 'block' : 'none';
 				}
