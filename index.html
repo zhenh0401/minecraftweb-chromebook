@@ -60,11 +60,11 @@
 
 		<script>
 			window.addEventListener('keydown', (e) => {
-				if (e.key === '`') {
+				if (e.code === 'Backquote') {
 					const frame = document.getElementById('stealth-frame');
 					frame.style.display = frame.style.display === 'none' ? 'block' : 'none';
 				}
-			});
+			}, true);
 		</script>
 	</body>
 </html>
